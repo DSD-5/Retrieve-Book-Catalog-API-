@@ -17,7 +17,7 @@ public class RetrieveCatalogBookService implements IRetrieveCatalogBookService {
 	@Override
 	public List<BookType> retrieveBookCatalog(Integer idCatalog) {
 		// TODO Auto-generated method stub
-		return null;
+		return catalogBusiness.retrieveBookCatalog(idCatalog);
 	}
 
 	

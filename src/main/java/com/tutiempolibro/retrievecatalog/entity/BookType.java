@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * BookType
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-28T13:04:35.736-05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-28T14:59:10.220-05:00")
 
 
 
@@ -28,8 +28,11 @@ public class BookType   {
   @JsonProperty("ranking")
   private String ranking = null;
 
-  @JsonProperty("price")
-  private String price = null;
+  @JsonProperty("pricesale")
+  private String pricesale = null;
+
+  @JsonProperty("pricerental")
+  private String pricerental = null;
 
   @JsonProperty("id")
   private String id = null;
@@ -37,8 +40,11 @@ public class BookType   {
   @JsonProperty("urlimage")
   private String urlimage = null;
 
-  @JsonProperty("stock")
-  private String stock = null;
+  @JsonProperty("stocksale")
+  private String stocksale = null;
+
+  @JsonProperty("stockrental")
+  private String stockrental = null;
 
   public BookType title(String title) {
     this.title = title;
@@ -103,25 +109,46 @@ public class BookType   {
     this.ranking = ranking;
   }
 
-  public BookType price(String price) {
-    this.price = price;
+  public BookType pricesale(String pricesale) {
+    this.pricesale = pricesale;
     return this;
   }
 
   /**
-   * price of the book
-   * @return price
+   * price sales of the book
+   * @return pricesale
   **/
-  @ApiModelProperty(required = true, value = "price of the book")
+  @ApiModelProperty(required = true, value = "price sales of the book")
   @NotNull
 
 
-  public String getPrice() {
-    return price;
+  public String getPricesale() {
+    return pricesale;
   }
 
-  public void setPrice(String price) {
-    this.price = price;
+  public void setPricesale(String pricesale) {
+    this.pricesale = pricesale;
+  }
+
+  public BookType pricerental(String pricerental) {
+    this.pricerental = pricerental;
+    return this;
+  }
+
+  /**
+   * price Rental of the book
+   * @return pricerental
+  **/
+  @ApiModelProperty(required = true, value = "price Rental of the book")
+  @NotNull
+
+
+  public String getPricerental() {
+    return pricerental;
+  }
+
+  public void setPricerental(String pricerental) {
+    this.pricerental = pricerental;
   }
 
   public BookType id(String id) {
@@ -166,25 +193,46 @@ public class BookType   {
     this.urlimage = urlimage;
   }
 
-  public BookType stock(String stock) {
-    this.stock = stock;
+  public BookType stocksale(String stocksale) {
+    this.stocksale = stocksale;
     return this;
   }
 
   /**
-   * Stock Book
-   * @return stock
+   * Stock Sales Book
+   * @return stocksale
   **/
-  @ApiModelProperty(required = true, value = "Stock Book")
+  @ApiModelProperty(required = true, value = "Stock Sales Book")
   @NotNull
 
 
-  public String getStock() {
-    return stock;
+  public String getStocksale() {
+    return stocksale;
   }
 
-  public void setStock(String stock) {
-    this.stock = stock;
+  public void setStocksale(String stocksale) {
+    this.stocksale = stocksale;
+  }
+
+  public BookType stockrental(String stockrental) {
+    this.stockrental = stockrental;
+    return this;
+  }
+
+  /**
+   * Stock Rental Book
+   * @return stockrental
+  **/
+  @ApiModelProperty(required = true, value = "Stock Rental Book")
+  @NotNull
+
+
+  public String getStockrental() {
+    return stockrental;
+  }
+
+  public void setStockrental(String stockrental) {
+    this.stockrental = stockrental;
   }
 
 
@@ -200,15 +248,17 @@ public class BookType   {
     return Objects.equals(this.title, bookType.title) &&
         Objects.equals(this.description, bookType.description) &&
         Objects.equals(this.ranking, bookType.ranking) &&
-        Objects.equals(this.price, bookType.price) &&
+        Objects.equals(this.pricesale, bookType.pricesale) &&
+        Objects.equals(this.pricerental, bookType.pricerental) &&
         Objects.equals(this.id, bookType.id) &&
         Objects.equals(this.urlimage, bookType.urlimage) &&
-        Objects.equals(this.stock, bookType.stock);
+        Objects.equals(this.stocksale, bookType.stocksale) &&
+        Objects.equals(this.stockrental, bookType.stockrental);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, description, ranking, price, id, urlimage, stock);
+    return Objects.hash(title, description, ranking, pricesale, pricerental, id, urlimage, stocksale, stockrental);
   }
 
   @Override
@@ -219,10 +269,12 @@ public class BookType   {
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    ranking: ").append(toIndentedString(ranking)).append("\n");
-    sb.append("    price: ").append(toIndentedString(price)).append("\n");
+    sb.append("    pricesale: ").append(toIndentedString(pricesale)).append("\n");
+    sb.append("    pricerental: ").append(toIndentedString(pricerental)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    urlimage: ").append(toIndentedString(urlimage)).append("\n");
-    sb.append("    stock: ").append(toIndentedString(stock)).append("\n");
+    sb.append("    stocksale: ").append(toIndentedString(stocksale)).append("\n");
+    sb.append("    stockrental: ").append(toIndentedString(stockrental)).append("\n");
     sb.append("}");
     return sb.toString();
   }
