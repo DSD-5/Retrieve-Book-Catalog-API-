@@ -12,7 +12,7 @@
 	<groupId>retrieve-book-catalog</groupId>
 	<artifactId>retrieve-book-catalog</artifactId>
 	<version>1.0.0</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<description>retrieve-book-catalog Service</description>
 
 	<properties>
@@ -54,11 +54,6 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
 		</dependency>
@@ -85,10 +80,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.22</version>
 		</dependency>
-
-
 		<!--SpringFox dependencies -->
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -104,7 +96,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -120,14 +111,71 @@
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>
+				spring-cloud-starter-netflix-eureka-client
+			</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+			   <groupId>org.springframework.boot</groupId>
+    				<artifactId>spring-boot-maven-plugin</artifactId>
+				    <configuration>
+				        <archive>
+				          <manifest>
+				            <addClasspath>true</addClasspath>
+				            <classpathPrefix>lib/</classpathPrefix>
+				            <mainClass>com.tutiempolibro.retrievecatalog.RetrieveCatalogBookApplication</mainClass>
+				          </manifest>
+				        </archive>
+     				 </configuration>
+				      <executions>
+				      <execution>
+				        <goals>
+				          <goal>repackage</goal>
+				        </goals>
+				      </execution>
+				    </executions>
 			</plugin>
+			<plugin>
+			      <artifactId>maven-assembly-plugin</artifactId>
+			      <configuration>
+			      <archive>
+				          <manifest>
+				            <addClasspath>true</addClasspath>
+				            <classpathPrefix>lib/</classpathPrefix>
+				            <mainClass>com.tutiempolibro.retrievecatalog.RetrieveCatalogBookApplication</mainClass>
+				          </manifest>
+				        </archive>
+			        <descriptorRefs>
+			          <descriptorRef>jar-with-dependencies</descriptorRef>
+			        </descriptorRefs>
+			      </configuration>
+			      <executions>
+				    <execution>
+				      <id>make-assembly</id> <!-- this is used for inheritance merges -->
+				      <phase>package</phase> <!-- bind to the packaging phase -->
+				      <goals>
+				        <goal>single</goal>
+				      </goals>
+				    </execution>
+				  </executions>
+    		</plugin>
 		</plugins>
 	</build>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Hoxton.SR8</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>
